@@ -3,6 +3,7 @@ package org.mifos.connector.channel.camel.routes;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import io.camunda.zeebe.client.ZeebeClient;
+import io.swagger.annotations.SwaggerDefinition;
 import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.component.bean.validator.BeanValidationException;
@@ -59,7 +60,7 @@ import static org.mifos.connector.common.mojaloop.type.TransactionRole.PAYEE;
 import static org.mifos.connector.common.mojaloop.type.TransactionRole.PAYER;
 
 @Component
-
+@SwaggerDefinition()
 public class ChannelRouteBuilder extends ErrorHandlerRouteBuilder {
 
 

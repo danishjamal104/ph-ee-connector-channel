@@ -1,6 +1,8 @@
 package org.mifos.connector.channel.camel.config;
 
 import org.apache.camel.CamelContext;
+import org.apache.camel.Component;
+import org.apache.camel.component.undertow.UndertowComponent;
 import org.apache.camel.spi.RestConfiguration;
 import org.apache.camel.spring.boot.CamelContextConfiguration;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,6 +36,14 @@ public class CamelContextConfig {
                 rest.setDataFormatProperties(new HashMap<>());
                 rest.getDataFormatProperties().put("prettyPrint", "true");
                 rest.setScheme("http");
+
+                // add swagger api-doc out of the box
+                rest.setContextPath("/api-doc");
+                rest.setApiProperties(new HashMap<>());
+                rest.getApiProperties().put("api.title", "API Title");
+                rest.getApiProperties().put("api.version", "v1");
+                // and enable CORS
+                rest.getApiProperties().put("cors", "true");
             }
 
             @Override

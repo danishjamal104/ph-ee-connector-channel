@@ -46,7 +46,7 @@ public class ZeebeWorkers {
     public static final String TRANSFER_FAILED = "transferFailed";
     public static final String TRANSFER_STATE = "transferState";
 
-    @PostConstruct
+    //@PostConstruct
     public void setupWorkers() {
         workerSendErrorToChannel();
         workerSendSuccessToChannel();
