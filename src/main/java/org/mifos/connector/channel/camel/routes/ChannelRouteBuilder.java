@@ -174,7 +174,8 @@ public class ChannelRouteBuilder extends ErrorHandlerRouteBuilder {
     }
 
     private void indexRoutes(){
-        from("rest:GET:/")
+        from("direct:get-index")
+                .id("direct:get-index")
                 .setHeader(Exchange.HTTP_RESPONSE_CODE, constant(200))
                 .setBody(constant(""));
     }
@@ -285,10 +286,10 @@ public class ChannelRouteBuilder extends ErrorHandlerRouteBuilder {
     }
 
     private void collectionRoutes(){
-        from("rest:POST:/channel/collection")
+        from("direct:post-collection")
                 .id("mpesa-payment-request")
                 .log(LoggingLevel.INFO, "## CHANNEL -> MPESA transaction request")
-                .to("bean-validator:request")
+                //.to("bean-validator:request")
                 .process(exchange -> {
 
                     amsUtils.postConstruct();
